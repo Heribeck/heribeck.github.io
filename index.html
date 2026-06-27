@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Meta tags para SEO y configuración básica -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Heribeck X. - Desarrollador de software independiente especializado en aplicaciones móviles y videojuegos de trivia">
+    <meta name="keywords" content="desarrollador, software, aplicaciones móviles, videojuegos, trivia, JavaScript, HTML, CSS">
+    <meta name="author" content="Heribeck X.">
+    <title>Heribeck X. - Desarrollador de Software Independiente</title>
+    
+    <!-- Google Fonts - Inter para tipografía moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Enlace al archivo de estilos CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navegación sticky con scroll suave -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo/nombre en la navegación -->
+            <div class="nav-logo">
+                <a href="#hero">HXSZ</a>
+            </div>
+            
+            <!-- Menú de navegación desktop -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link">Sobre Mí</a></li>
+                <li class="nav-item"><a href="#technologies" class="nav-link">Tecnologías</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Servicios</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Portafolio</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+            
+            <!-- Botón hamburguesa para móvil -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero - Presentación principal -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- Saludo animado -->
+                <p class="hero-greeting">Desarrollador Full-Stack en Constante Evolución</p>
+                <!-- Nombre principal con efecto de resaltado -->
+                <h1 class="hero-name">Heribeck X.</h1>
+                <!-- Título/profesión con animación de escritura -->
+                <h2 class="hero-title">Desarrollo Móvil • Web • Backend • Game Dev</h2>
+                <!-- Descripción breve -->
+                <p class="hero-description">
+                    Desarrollador polivalente con pasión por aprender y adaptarse a nuevas tecnologías. Especializado en aplicaciones móviles, desarrollo web, sistemas de backend y videojuegos. Cada proyecto es una oportunidad para crecer y dominar nuevas habilidades.
+                </p>
+                <!-- Botones de acción -->
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">Ver Proyectos</a>
+                    <a href="#contact" class="btn btn-secondary">Contactar</a>
+                </div>
+            </div>
+            <!-- Elemento decorativo animado -->
+            <div class="hero-decoration">
+                <div class="floating-element"></div>
+            </div>
+        </div>
+        <!-- Indicador de scroll -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Mí - Biografía -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sobre Mí</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="about-content">
+                <!-- Icono representativo -->
+                <div class="about-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <!-- Biografía completa -->
+                <div class="about-text">
+                    <p>
+                        Soy un desarrollador en constante evolución, apasionado por aprender y dominar nuevas tecnologías. Mi trayectoria comenzó con el desarrollo de videojuegos de trivia, pero mi curiosidad técnica me ha llevado a expandir mis habilidades hacia el desarrollo web, sistemas de backend y arquitectura de aplicaciones móviles.
+                    </p>
+                    <p>
+                        No me limito a un solo stack tecnológico. Cada proyecto es una oportunidad para aprender algo nuevo: hoy puedo estar programando un juego móvil, mañana desarrollando una aplicación web completa, y después implementando un sistema backend robusto. Esta versatilidad me permite abordar desafíos desde múltiples perspectivas y entregar soluciones integrales.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Tecnologías - Stack técnico -->
+    <section class="technologies" id="technologies">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tecnologías</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="technologies-grid">
+                <!-- Card JavaScript -->
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3 class="tech-name">JavaScript (ES6+)</h3>
+                    <p class="tech-description">Programación orientada a objetos, funciones asíncronas, manipulación del DOM y arquitectura de aplicaciones modernas</p>
+                </div>
+                
+                <!-- Card HTML -->
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="tech-name">HTML5 Semántico</h3>
+                    <p class="tech-description">Estructura de documentos optimizada para SEO, accesibilidad (WCAG) y rendimiento en dispositivos móviles</p>
+                </div>
+                
+                <!-- Card CSS -->
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3 class="tech-name">CSS3 Avanzado</h3>
+                    <p class="tech-description">Flexbox, CSS Grid, animaciones CSS, variables CSS y diseño responsive con mobile-first approach</p>
+                </div>
+                
+                <!-- Card Herramientas Web-to-Native -->
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="tech-name">Mobile Development</h3>
+                    <p class="tech-description">Aplicaciones móviles híbridas y nativas, optimización para Android y conversión de web a apps nativas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios - Ofertas profesionales -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Servicios</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="services-grid">
+                
+                <!-- Servicio 1: Desarrollo Móvil -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile"></i>
+                    </div>
+                    <h3 class="service-name">Desarrollo de Aplicaciones Móviles</h3>
+                    <p class="service-description">
+                        Apps móviles híbridas y nativas para Android, optimizadas para diferentes dispositivos y con experiencia de usuario fluida
+                    </p>
+                </div>
+                
+                <!-- Servicio 2: Game Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="service-name">Game Development</h3>
+                    <p class="service-description">
+                        Videojuegos de trivia y juegos casuales con mecánicas de progresión, sistemas de niveles y algoritmos de dificultad adaptativa
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Portafolio - Proyectos -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Portafolio</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Proyecto: Poketype -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-name">Poketype - Trivia Game Engine</h3>
+                        <p class="portfolio-description">
+                            Sistema de trivia móvil con arquitectura modular y algoritmo de dificultad adaptativa. Implementa un sistema de progresión gamificado que escala dinámicamente desde nivel principiante hasta campeón, con más de 500 preguntas categorizadas y sistema de rankings en tiempo real. Publicado en Google Play Store con optimización para dispositivos de gama baja y alta.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Trivia</span>
+                            <span class="tag">Pokémon</span>
+                            <span class="tag">Móvil</span>
+                        </div>
+                        <!-- Espacio para enlace a Play Store -->
+                        <div class="portfolio-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.heribeck.PokeTypeGuess" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-google-play"></i>
+                                Disponible en Play Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Placeholder para futuros proyectos -->
+                <div class="portfolio-card portfolio-placeholder-card">
+                    <div class="portfolio-placeholder-content">
+                        <i class="fas fa-plus-circle"></i>
+                        <p>Más proyectos próximamente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto - Formulario y redes -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contacto</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="contact-content">
+                <!-- Información de contacto -->
+                <div class="contact-info">
+                    <h3>Iniciemos una Colaboración</h3>
+                    <p>
+                        ¿Buscas desarrollar una aplicación móvil de alto impacto o un sistema de trivia escalable? Estoy disponible para consultoría y desarrollo de proyectos a medida. Discutamos cómo puedo aportar valor técnico a tu próximo emprendimiento digital.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <!-- Email -->
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contacto@heribeck.com</span>
+                        </div>
+                        
+                        <!-- Redes sociales (placeholders) -->
+                        <div class="contact-social">
+                            <a href="#" class="social-link" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://t.me/xaliburz" class="social-link" aria-label="Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formulario de contacto (visual, sin backend) -->
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Heribeck X. Todos los derechos reservados.</p>
+                <p>Desarrollado con <i class="fas fa-heart"></i> y código</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

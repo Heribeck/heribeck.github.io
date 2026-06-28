@@ -9,7 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initNavbarScroll();
     initSmoothScroll();
-    initContactForm();
+    initTechCarousel();
+    initStatsCounter();
+    initParticles();
+    initLoader();
+    initBackToTop();
 });
 
 // ============================================
@@ -23,11 +27,15 @@ function initMobileMenu() {
     
     // Toggle del menú al hacer clic en el botón hamburguesa
     navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
+        const isActive = navMenu.classList.toggle('active');
+        
+        // Actualizar aria-expanded
+        navToggle.setAttribute('aria-expanded', isActive);
+        navToggle.setAttribute('aria-label', isActive ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
         
         // Animar las barras del botón hamburguesa
         const bars = navToggle.querySelectorAll('.nav-toggle-bar');
-        if (navMenu.classList.contains('active')) {
+        if (isActive) {
             bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
             bars[1].style.opacity = '0';
             bars[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
@@ -42,6 +50,10 @@ function initMobileMenu() {
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
+            
+            // Actualizar aria-expanded
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
             
             // Restaurar animación del botón hamburguesa
             const bars = navToggle.querySelectorAll('.nav-toggle-bar');
@@ -59,11 +71,25 @@ function initMobileMenu() {
         if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
             
+            // Actualizar aria-expanded
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+            
             // Restaurar animación del botón hamburguesa
             const bars = navToggle.querySelectorAll('.nav-toggle-bar');
             bars[0].style.transform = 'none';
             bars[1].style.opacity = '1';
             bars[2].style.transform = 'none';
+        }
+    });
+    
+    // Cerrar menú con tecla Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+            navToggle.focus();
         }
     });
 }
@@ -94,11 +120,28 @@ function initScrollAnimations() {
     const techCards = document.querySelectorAll('.tech-card');
     const serviceCards = document.querySelectorAll('.service-card');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
+    const statCards = document.querySelectorAll('.stat-card');
     
-    // Agregar cada card al observer
-    techCards.forEach(card => observer.observe(card));
-    serviceCards.forEach(card => observer.observe(card));
-    portfolioCards.forEach(card => observer.observe(card));
+    // Agregar delays escalonados para stagger animation
+    techCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
+    });
+    
+    serviceCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
+    });
+    
+    portfolioCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.15}s`;
+        observer.observe(card);
+    });
+    
+    statCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
+    });
 }
 
 // ============================================
@@ -146,36 +189,6 @@ function initSmoothScroll() {
         });
     });
 }
-
-// ============================================
-// MANEJO DEL FORMULARIO DE CONTACTO
-// ============================================
-function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    
-    // Escuchar el evento de submit del formulario
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevenir el envío por defecto
-        
-        // Obtener los valores del formulario
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // Validar que los campos no estén vacíos
-        if (name && email && message) {
-            // Mostrar mensaje de éxito (visual, sin backend)
-            alert('¡Gracias por tu mensaje, ' + name + '! Me pondré en contacto contigo pronto.');
-            
-            // Limpiar el formulario
-            contactForm.reset();
-        } else {
-            // Mostrar mensaje de error
-            alert('Por favor, completa todos los campos del formulario.');
-        }
-    });
-}
-
 // ============================================
 // EFECTO PARALLAX EN ELEMENTO DECORATIVO
 // ============================================
@@ -258,3 +271,251 @@ function initActiveSectionTracking() {
 
 // Inicializar tracking de sección activa
 initActiveSectionTracking();
+
+// ============================================
+// CARRUSEL DE TECH STACK - SIMPLE Y FLUIDO
+// ============================================
+function initTechCarousel() {
+    const techGrid = document.querySelector('.technologies-grid');
+    const arrowLeft = document.getElementById('tech-arrow-left');
+    const arrowRight = document.getElementById('tech-arrow-right');
+    
+    if (!techGrid || !arrowLeft || !arrowRight) {
+        console.log('Carousel elements not found');
+        return;
+    }
+    
+    const cardWidth = 280 + 32; // 280px card width + 32px gap
+    let autoScrollInterval;
+    let isPaused = false;
+    
+    // Función para scroll automático con reset suave
+    function autoScroll() {
+        if (!isPaused) {
+            const maxScroll = techGrid.scrollWidth - techGrid.clientWidth;
+            const currentScroll = techGrid.scrollLeft;
+            
+            if (currentScroll >= maxScroll - 50) {
+                // Reset instantáneo al inicio sin animación
+                techGrid.scrollLeft = 0;
+            } else {
+                // Scroll suave
+                techGrid.scrollBy({
+                    left: cardWidth,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+    
+    // Iniciar auto-scroll cada 3 segundos
+    autoScrollInterval = setInterval(autoScroll, 3000);
+    
+    // Navegación con flechas
+    arrowLeft.addEventListener('click', function() {
+        isPaused = true;
+        techGrid.scrollBy({
+            left: -cardWidth,
+            behavior: 'smooth'
+        });
+        setTimeout(() => { isPaused = false; }, 2000);
+    });
+    
+    arrowRight.addEventListener('click', function() {
+        isPaused = true;
+        techGrid.scrollBy({
+            left: cardWidth,
+            behavior: 'smooth'
+        });
+        setTimeout(() => { isPaused = false; }, 2000);
+    });
+    
+    // Pausar al hacer hover
+    techGrid.addEventListener('mouseenter', function() {
+        isPaused = true;
+    });
+    
+    techGrid.addEventListener('mouseleave', function() {
+        isPaused = false;
+    });
+    
+    // Mostrar flechas
+    arrowLeft.style.display = 'flex';
+    arrowRight.style.display = 'flex';
+    
+    console.log('Simple carousel initialized');
+}
+
+// ============================================
+// CONTADOR ANIMADO DE ESTADÍSTICAS
+// ============================================
+function initStatsCounter() {
+    const statCards = document.querySelectorAll('.stat-card');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumber = entry.target.querySelector('.stat-number');
+                const target = parseInt(statNumber.getAttribute('data-target'));
+                animateCounter(statNumber, target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    statCards.forEach(card => observer.observe(card));
+}
+
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const duration = 2000;
+    const stepTime = duration / 50;
+    
+    const timer = setInterval(function() {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target.toLocaleString();
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current).toLocaleString();
+        }
+    }, stepTime);
+}
+
+// ============================================
+// EFECTO DE PARTÍCULAS EN HERO
+// ============================================
+function initParticles() {
+    const canvas = document.getElementById('particles-canvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+            this.opacity = Math.random() * 0.5 + 0.2;
+        }
+        
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        
+        draw() {
+            ctx.fillStyle = `rgba(0, 255, 136, ${this.opacity})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+    
+    function createParticles() {
+        const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    }
+    
+    function connectParticles() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 120) {
+                    const opacity = (1 - distance / 120) * 0.15;
+                    ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+        
+        connectParticles();
+        requestAnimationFrame(animate);
+    }
+    
+    createParticles();
+    animate();
+    
+    window.addEventListener('resize', createParticles);
+}
+
+// ============================================
+// LOADER INICIAL
+// ============================================
+function initLoader() {
+    const loader = document.getElementById('loader');
+    
+    // Ocultar loader después de 1.5 segundos
+    setTimeout(function() {
+        loader.classList.add('hidden');
+        
+        // Remover loader del DOM después de la transición
+        setTimeout(function() {
+            loader.style.display = 'none';
+        }, 500);
+    }, 1500);
+}
+
+// ============================================
+// BOTÓN VOLVER ARRIBA
+// ============================================
+function initBackToTop() {
+    const backToTop = document.getElementById('back-to-top');
+    
+    // Mostrar/ocultar botón al hacer scroll
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    
+    // Scroll suave al inicio al hacer clic
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}

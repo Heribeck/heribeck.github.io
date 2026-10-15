@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initNavbarScroll();
     initSmoothScroll();
-    initTechCarousel();
     initStatsCounter();
     initParticles();
     initLoader();
@@ -271,80 +270,6 @@ function initActiveSectionTracking() {
 
 // Inicializar tracking de sección activa
 initActiveSectionTracking();
-
-// ============================================
-// CARRUSEL DE TECH STACK - SIMPLE Y FLUIDO
-// ============================================
-function initTechCarousel() {
-    const techGrid = document.querySelector('.technologies-grid');
-    const arrowLeft = document.getElementById('tech-arrow-left');
-    const arrowRight = document.getElementById('tech-arrow-right');
-    
-    if (!techGrid || !arrowLeft || !arrowRight) {
-        console.log('Carousel elements not found');
-        return;
-    }
-    
-    const cardWidth = 280 + 32; // 280px card width + 32px gap
-    let autoScrollInterval;
-    let isPaused = false;
-    
-    // Función para scroll automático con reset suave
-    function autoScroll() {
-        if (!isPaused) {
-            const maxScroll = techGrid.scrollWidth - techGrid.clientWidth;
-            const currentScroll = techGrid.scrollLeft;
-            
-            if (currentScroll >= maxScroll - 50) {
-                // Reset instantáneo al inicio sin animación
-                techGrid.scrollLeft = 0;
-            } else {
-                // Scroll suave
-                techGrid.scrollBy({
-                    left: cardWidth,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    }
-    
-    // Iniciar auto-scroll cada 3 segundos
-    autoScrollInterval = setInterval(autoScroll, 3000);
-    
-    // Navegación con flechas
-    arrowLeft.addEventListener('click', function() {
-        isPaused = true;
-        techGrid.scrollBy({
-            left: -cardWidth,
-            behavior: 'smooth'
-        });
-        setTimeout(() => { isPaused = false; }, 2000);
-    });
-    
-    arrowRight.addEventListener('click', function() {
-        isPaused = true;
-        techGrid.scrollBy({
-            left: cardWidth,
-            behavior: 'smooth'
-        });
-        setTimeout(() => { isPaused = false; }, 2000);
-    });
-    
-    // Pausar al hacer hover
-    techGrid.addEventListener('mouseenter', function() {
-        isPaused = true;
-    });
-    
-    techGrid.addEventListener('mouseleave', function() {
-        isPaused = false;
-    });
-    
-    // Mostrar flechas
-    arrowLeft.style.display = 'flex';
-    arrowRight.style.display = 'flex';
-    
-    console.log('Simple carousel initialized');
-}
 
 // ============================================
 // CONTADOR ANIMADO DE ESTADÍSTICAS

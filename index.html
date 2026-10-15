@@ -5,14 +5,14 @@
     <!-- Meta tags para SEO y configuración básica -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Heribeck X. - Desarrollador de software independiente especializado en aplicaciones móviles y videojuegos de trivia">
-    <meta name="keywords" content="desarrollador, software, aplicaciones móviles, videojuegos, JavaScript, HTML, CSS">
+    <meta name="description" content="Heribeck X. - Desarrollador de software independiente. Proyectos móviles y web con React, TypeScript y tecnologías modernas.">
+    <meta name="keywords" content="desarrollador, software, aplicaciones móviles, React, TypeScript, Tailwind CSS, JavaScript">
     <meta name="author" content="Heribeck X.">
     <title>Heribeck X. - Desarrollador de Software Independiente</title>
     
     <!-- Open Graph para redes sociales -->
     <meta property="og:title" content="Heribeck X. - Desarrollador de Software Independiente">
-    <meta property="og:description" content="Desarrollador Full-Stack especializado en desarrollo móvil, web y game dev. JavaScript, HTML5, CSS3.">
+    <meta property="og:description" content="Desarrollador de software independiente con proyectos móviles y web, React, TypeScript y tecnologías modernas.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://heribeck.github.io">
     <meta property="og:image" content="https://heribeck.github.io/assets/images/og-image.png">
@@ -21,7 +21,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Heribeck X. - Desarrollador de Software Independiente">
-    <meta name="twitter:description" content="Desarrollador Full-Stack especializado en desarrollo móvil, web y game dev.">
+    <meta name="twitter:description" content="Desarrollador de software independiente con proyectos móviles y web, React, TypeScript y tecnologías modernas.">
     <meta name="twitter:image" content="https://heribeck.github.io/assets/images/og-image.png">
     
     <!-- Google Fonts - Inter para tipografía moderna -->
@@ -51,7 +51,7 @@
             <!-- Menú de navegación desktop -->
             <ul class="nav-menu" id="nav-menu" role="menubar">
                 <li class="nav-item"><a href="#about" class="nav-link" aria-label="Ir a sección Sobre Mí">Sobre Mí</a></li>
-                <li class="nav-item"><a href="#technologies" class="nav-link" aria-label="Ir a sección Tech Stack">Tech Stack</a></li>
+                <li class="nav-item"><a href="#technologies" class="nav-link" aria-label="Ir a sección de habilidades">Habilidades</a></li>
                 <li class="nav-item"><a href="#portfolio" class="nav-link" aria-label="Ir a sección Portafolio">Portafolio</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link" aria-label="Ir a sección Contacto">Contacto</a></li>
             </ul>
@@ -143,8 +143,8 @@
                     <div class="stat-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <div class="stat-number" data-target="4">0</div>
-                    <div class="stat-label">Tecnologías</div>
+                    <div class="stat-number" data-target="9">0</div>
+                    <div class="stat-label">Tecnologías y prácticas</div>
                 </div>
             </div>
         </div>
@@ -159,9 +159,6 @@
             </div>
             
             <div class="technologies-carousel">
-                <button class="carousel-arrow carousel-arrow-left" id="tech-arrow-left">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
                 <div class="technologies-grid">
                     <!-- Card JavaScript -->
                     <div class="tech-card">
@@ -198,10 +195,42 @@
                         <h3 class="tech-name">Mobile Development</h3>
                         <p class="tech-description">Aplicaciones móviles híbridas y nativas, optimización para Android y conversión de web a apps nativas</p>
                     </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <h3 class="tech-name">React</h3>
+                        <p class="tech-description">Interfaces por componentes, estado de aplicación y composición de pantallas para productos móviles y web.</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="tech-name">TypeScript</h3>
+                        <p class="tech-description">Tipos explícitos para desarrollar funcionalidades más claras, consistentes y fáciles de mantener.</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3 class="tech-name">Tailwind CSS</h3>
+                        <p class="tech-description">Estilizado de interfaces con utilidades y patrones visuales coherentes dentro de la aplicación.</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3 class="tech-name">pnpm</h3>
+                        <p class="tech-description">Gestión de dependencias y workspaces para organizar y mantener proyectos JavaScript.</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="tech-name">IA y estructura profesional</h3>
+                        <p class="tech-description">Trabajo con asistentes de IA mediante instrucciones claras y contexto; reviso sus propuestas y mantengo el proyecto organizado por responsabilidades.</p>
+                    </div>
                 </div>
-                <button class="carousel-arrow carousel-arrow-right" id="tech-arrow-right">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
         </div>
     </section>
@@ -216,11 +245,10 @@
             
             <div class="portfolio-grid">
                 <!-- Proyecto: Pokebeck -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <div class="portfolio-placeholder">
-                            <img src="/assets/images/icon-transparente-512px.png" alt="Pokebeck Hub">
-                        </div>
+                <article class="portfolio-card">
+                    <div class="portfolio-image portfolio-image-pokebeck">
+                        <img src="assets/images/icon-transparente-512px.png" alt="Logotipo de Pokebeck Hub" loading="lazy">
+                        <span class="portfolio-category">Juego móvil</span>
                     </div>
                     <div class="portfolio-content">
                         <h3 class="portfolio-name">Pokebeck Hub</h3>
@@ -243,15 +271,36 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Placeholder para futuros proyectos -->
-                <div class="portfolio-card portfolio-placeholder-card">
-                    <div class="portfolio-placeholder-content">
-                        <i class="fas fa-plus-circle"></i>
-                        <p>Más proyectos próximamente</p>
+                </article>
+
+                <!-- Proyecto: Skilme -->
+                <article class="portfolio-card">
+                    <div class="portfolio-image portfolio-image-skilme">
+                        <img src="assets/images/skilme-logo.png" alt="Logotipo de Skilme" loading="lazy">
+                        <span class="portfolio-category">Finanzas personales · Android</span>
                     </div>
-                </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-name">Skilme</h3>
+                        <p class="portfolio-description">
+                            Aplicación Android de finanzas personales para registrar ingresos, gastos y transferencias, y organizar cuentas y categorías. Incluye historial con filtros, análisis, recordatorios locales e importación y exportación de datos.
+                        </p>
+                        <p class="portfolio-description">
+                            Desarrollada con <strong>React y TypeScript</strong>, combina almacenamiento local con SQLite y permite exportar informes mensuales a PDF. Su estructura modular facilita mantener y ampliar sus funciones.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tailwind CSS</span>
+                            <span class="tag">Capacitor</span>
+                        </div>
+                        <div class="portfolio-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.heribeck.skilme" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-google-play"></i>
+                                Disponible en Play Store
+                            </a>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

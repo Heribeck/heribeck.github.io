@@ -120,6 +120,12 @@ function initScrollAnimations() {
     const serviceCards = document.querySelectorAll('.service-card');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
     const statCards = document.querySelectorAll('.stat-card');
+
+    // Agregar delays escalonados para stagger animation
+    techCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.05}s`;
+        observer.observe(card);
+    });
     
     // Agregar delays escalonados para stagger animation
     techCards.forEach((card, index) => {
@@ -280,15 +286,19 @@ function initStatsCounter() {
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5
+        threshold: 0.1
     };
     
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const statNumber = entry.target.querySelector('.stat-number');
-                const target = parseInt(statNumber.getAttribute('data-target'));
-                animateCounter(statNumber, target);
+                if (statNumber) {
+                    const target = parseInt(statNumber.getAttribute('data-target'));
+                    if (!isNaN(target)) {
+                        animateCounter(statNumber, target);
+                    }
+                }
                 observer.unobserve(entry.target);
             }
         });

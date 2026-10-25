@@ -483,13 +483,34 @@ img {
 
 .technologies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     padding: var(--spacing-sm) 0;
+}
+
+.tech-category {
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-category-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+.tech-category-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .tech-card {
     min-width: 0;
+    position: relative;
 }
 
 .tech-card {
@@ -503,6 +524,26 @@ img {
     opacity: 0;
     transform: translateY(30px);
     box-shadow: var(--shadow-card);
+}
+
+.tech-cert-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-normal);
+}
+
+.tech-cert-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-bg-primary);
 }
 
 .tech-card.visible {
@@ -754,6 +795,68 @@ img {
 
 .contact-item span {
     color: var(--color-text-primary);
+}
+
+/* Sección de plataformas profesionales */
+.platforms-section {
+    width: 100%;
+    max-width: 900px;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.platforms-heading {
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.platform-card {
+    background: var(--color-bg-card);
+    padding: var(--spacing-md);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: var(--transition-normal);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    box-shadow: var(--shadow-card);
+}
+
+.platform-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.platform-icon {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-xs);
+}
+
+.platform-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.platform-description {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
 .contact-social {

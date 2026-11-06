@@ -483,7 +483,7 @@ img {
 
 .technologies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
     padding: var(--spacing-sm) 0;
 }
@@ -669,6 +669,25 @@ img {
     font-weight: 600;
     margin-bottom: 0.8rem;
     color: var(--color-text-primary);
+}
+
+.portfolio-status {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.45rem;
+    margin: -0.25rem 0 1rem;
+    padding: 0.35rem 0.65rem;
+    border: 1px solid rgba(212, 183, 122, 0.24);
+    border-radius: 999px;
+    color: #d4b77a;
+    background: rgba(212, 183, 122, 0.07);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.portfolio-status i {
+    font-size: 0.7rem;
 }
 
 .portfolio-description {
@@ -1156,6 +1175,10 @@ img {
     
     .nav-menu.active {
         left: 0;
+    }
+
+    .technologies-grid {
+        grid-template-columns: 1fr;
     }
     
     /* Hero */

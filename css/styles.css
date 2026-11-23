@@ -44,9 +44,6 @@
 
 html {
     scroll-behavior: smooth;
-}
-
-html {
     scroll-padding-top: 80px;
 }
 
@@ -57,6 +54,11 @@ body {
     background-color: var(--color-bg-primary);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+::selection {
+    background: rgba(0, 255, 136, 0.25);
+    color: var(--color-text-primary);
 }
 
 /* Scrollbar personalizado */
@@ -118,9 +120,9 @@ img {
 }
 
 .section-line {
-    width: 52px;
+    width: 72px;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent), transparent);
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
     margin: 0 auto;
     border-radius: 3px;
 }
@@ -135,10 +137,16 @@ img {
     width: 100%;
     background: rgba(8, 12, 10, 0.88);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 1000;
     padding: var(--spacing-sm) 0;
     transition: var(--transition-normal);
     border-bottom: 1px solid rgba(170, 184, 176, 0.08);
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .nav-container {
@@ -179,11 +187,13 @@ img {
     transition: var(--transition-normal);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
     color: var(--color-accent);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
@@ -416,6 +426,11 @@ img {
     font-size: 1.1rem;
 }
 
+.about-stats {
+    width: 100%;
+    max-width: 820px;
+}
+
 /* ============================================
    SECCIÓN ESTADÍSTICAS
    ============================================ */
@@ -483,8 +498,8 @@ img {
 
 .technologies-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
     padding: var(--spacing-sm) 0;
 }
 
@@ -503,8 +518,8 @@ img {
 }
 
 .tech-category-group {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 1rem;
 }
 
@@ -516,7 +531,6 @@ img {
 .tech-card {
     background: var(--color-bg-card);
     padding: 1.5rem;
-    min-height: 238px;
     border-radius: 16px;
     border: 1px solid var(--color-border);
     text-align: left;
@@ -530,12 +544,15 @@ img {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     font-size: 0.7rem;
     padding: 0.3rem 0.6rem;
     background: rgba(0, 255, 136, 0.1);
     color: var(--color-accent);
-    border: 1px solid var(--color-accent);
-    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition-normal);
@@ -558,8 +575,16 @@ img {
 }
 
 .tech-icon {
-    font-size: 1.7rem;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
     color: var(--color-accent);
+    background: rgba(0, 255, 136, 0.07);
+    border: 1px solid rgba(0, 255, 136, 0.18);
+    border-radius: 12px;
     margin-bottom: 1.15rem;
 }
 
@@ -722,7 +747,6 @@ img {
     flex-wrap: wrap;
     gap: var(--spacing-xs);
 }
-
 /* ============================================
    SECCIÓN CONTACTO
    ============================================ */
@@ -786,18 +810,16 @@ img {
 .contact-item {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: var(--spacing-sm);
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 14px;
     color: var(--color-text-primary);
     text-decoration: none;
     transition: var(--transition-normal);
     width: 100%;
-    font-size: 1rem;
-    font-weight: 500;
+    text-align: left;
 }
 
 .contact-item:hover {
@@ -807,13 +829,39 @@ img {
     box-shadow: 0 5px 20px rgba(0, 255, 136, 0.15);
 }
 
-.contact-item i {
+.contact-item > i {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--color-accent);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid rgba(0, 255, 136, 0.18);
+    border-radius: 11px;
 }
 
-.contact-item span {
+.contact-item-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.contact-item-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.contact-item-value {
+    font-size: 0.98rem;
+    font-weight: 500;
     color: var(--color-text-primary);
+    word-break: break-all;
 }
 
 /* Sección de plataformas profesionales */
@@ -956,6 +1004,33 @@ img {
 
 .footer-content i {
     color: var(--color-accent);
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-socials .social-link {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    transition: var(--transition-normal);
+}
+
+.footer-socials .social-link:hover {
+    color: var(--color-accent);
+    border-color: rgba(0, 255, 136, 0.5);
+    background: rgba(0, 255, 136, 0.06);
+    transform: translateY(-3px);
 }
 
 /* ============================================
@@ -1254,8 +1329,13 @@ img {
     }
     
     .contact-item {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .contact-item > i {
+        width: 38px;
+        height: 38px;
+        font-size: 1.15rem;
     }
     
     .back-to-top {

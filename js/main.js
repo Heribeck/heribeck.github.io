@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavbarScroll();
     initSmoothScroll();
     initStatsCounter();
+    initExperienceYears();
     initParticles();
     initLoader();
     initBackToTop();
@@ -123,12 +124,6 @@ function initScrollAnimations() {
 
     // Agregar delays escalonados para stagger animation
     techCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.05}s`;
-        observer.observe(card);
-    });
-    
-    // Agregar delays escalonados para stagger animation
-    techCards.forEach((card, index) => {
         card.style.transitionDelay = `${index * 0.1}s`;
         observer.observe(card);
     });
@@ -157,14 +152,8 @@ function initNavbarScroll() {
     
     // Escuchar el evento de scroll
     window.addEventListener('scroll', function() {
-        // Si el scroll es mayor a 50px, agregar sombra a la navbar
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
-            navbar.style.padding = '0.5rem 0';
-        } else {
-            navbar.style.boxShadow = 'none';
-            navbar.style.padding = '1rem 0';
-        }
+        // Si el scroll es mayor a 50px, compactar la navbar con sombra
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 }
 
@@ -322,6 +311,21 @@ function animateCounter(element, target) {
             element.textContent = Math.floor(current).toLocaleString();
         }
     }, stepTime);
+}
+
+// ============================================
+// AÑOS DE EXPERIENCIA (cálculo automático)
+// ============================================
+function initExperienceYears() {
+    const element = document.getElementById('experience-years');
+    if (!element) return;
+    
+    // Fecha de inicio en la programación: 1 de enero de 2026
+    const startDate = new Date(2026, 0, 1);
+    const msPerYear = 365.25 * 24 * 60 * 60 * 1000;
+    const years = Math.max(0, (Date.now() - startDate.getTime()) / msPerYear);
+    
+    element.textContent = years.toFixed(1);
 }
 
 // ============================================
